@@ -1,11 +1,13 @@
 from abc import ABC, abstractmethod
 
-class Entity(ABC):
+class Entity(object):
     
     def __init__(self, name):
         assert isinstance(name, str)
-        self.__name = name
+        assert name is not None
+        assert len(name) > 0
+        self._name = name
 
     @abstractmethod
     def get_name(self):
-        pass;
+        pass

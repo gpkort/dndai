@@ -4,7 +4,8 @@ from Game.Entity import Entity
 class Player(Entity):
 
     def __init__(self, name):
-        super(Player, name)
+        # assert isinstance(name, str)
+        Entity.__init__(self, name)
 
         self.strength = 0
         self.intelligence = 0
@@ -13,6 +14,8 @@ class Player(Entity):
         self.constitution = 0
         self.charisma = 0
         self.level = 1
+        self.hit_points = 0
+        self.armor_class = 0
         self.job_class = None
         self.experience_points = 0
         self.wallet = None
@@ -25,4 +28,5 @@ class Player(Entity):
         class_name = 'NONE' if self.job_class is None else self.job_class.name
         class_title = '' if self.job_class is None else self.job_class.title
 
-        return self.__name + ' - ' + class_name + ', ' + class_title
+        return self._name + ' - ' + class_name + ', ' + class_title
+
