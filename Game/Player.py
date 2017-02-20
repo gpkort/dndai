@@ -30,3 +30,12 @@ class Player(Entity):
 
         return self._name + ' - ' + class_name + ', ' + class_title
 
+    def print_attributes(self):
+        print('Strength = ' + str(self.strength))
+        print('Intelligence = ' + str(self.intelligence))
+        print('Wisdom = ' + str(self.wisdom))
+        print('Dexterity = ' + str(self.dexterity))
+        print('Constitution = ' + str(self.constitution))
+        print('Charisma = ' + str(self.charisma))
+
+

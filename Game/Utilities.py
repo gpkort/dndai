@@ -1,6 +1,7 @@
 from Game import Dice
 
-def roll_atttribute(dicard_threshhold=0):
+
+def roll_attribute_dice(dicard_threshhold=0):
     die1 = Dice.six_sided()
     die2 = Dice.six_sided()
     die3 = Dice.six_sided()
@@ -13,3 +14,4 @@ def roll_atttribute(dicard_threshhold=0):
         die3 = Dice.six_sided()
 
     return die1 + die2 + die3
+
