@@ -9,7 +9,7 @@ class UtilityTests(unittest.TestCase):
         self.assertTrue(3 <= roll < 18)
 
     def test_roll_attribs(self):
-        player = play.Player('Bev')
+        player = play.Player('Betsy ')
         print('Initial')
         player.print_attributes()
 

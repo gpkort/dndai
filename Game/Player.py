@@ -1,10 +1,10 @@
 from Game.Entity import Entity
+from Game import Armor
 
 
 class Player(Entity):
 
     def __init__(self, name):
-        # assert isinstance(name, str)
         Entity.__init__(self, name)
 
         self.strength = 0
@@ -20,6 +20,7 @@ class Player(Entity):
         self.experience_points = 0
         self.wallet = None
         self.equipment = None
+        self.items = []
 
     def __str__(self):
         return self.get_name() + ' Level: ' + self.level
@@ -28,7 +29,7 @@ class Player(Entity):
         class_name = 'NONE' if self.job_class is None else self.job_class.name
         class_title = '' if self.job_class is None else self.job_class.title
 
-        return self._name + ' - ' + class_name + ', ' + class_title
+        return super().get_name() + ' - ' + class_name + ', ' + class_title
 
     def print_attributes(self):
         print('Strength = ' + str(self.strength))
@@ -37,5 +38,13 @@ class Player(Entity):
         print('Dexterity = ' + str(self.dexterity))
         print('Constitution = ' + str(self.constitution))
         print('Charisma = ' + str(self.charisma))
+
+    def get_armor_class(self):
+        ac = 0
+        for i in self.items:
+            if isinstance(i, Armor):
+                ac += i.armorclass
+        return ac
+
 
 
