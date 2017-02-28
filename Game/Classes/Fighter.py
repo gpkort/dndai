@@ -12,8 +12,11 @@ class Fighter(PlayerClass):
     }
 
     def get_hit_roll(self) -> float:
-        return float(Dice.eight_sided())
+        return Dice.eight_sided()
 
     def get_saving_throw(self, versus_attack: ut.ATTACK_TYPES) -> list[:bool, :float]:
         roll = Dice.twenty_sided()
         return [(roll >= Fighter.SAVING_THROWS[versus_attack]), roll]
+
+    def get_initial_hit_points(self):
+        return Dice.eight_sided()
