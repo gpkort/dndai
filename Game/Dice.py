@@ -19,3 +19,5 @@ def ten_sided():
 
 def twenty_sided():
     return randrange(1, 21)
+
+
