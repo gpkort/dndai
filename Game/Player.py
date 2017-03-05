@@ -39,12 +39,7 @@ class Player(Entity):
         print('Constitution = ' + str(self.constitution))
         print('Charisma = ' + str(self.charisma))
 
-    def get_armor_class(self):
-        ac = 0
-        for i in self.items:
-            if isinstance(i, Armor):
-                ac += i.armorclass
-        return ac
+
 
 
 

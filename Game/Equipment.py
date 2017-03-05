@@ -2,7 +2,7 @@ from Game.Entity import Entity
 
 
 class Equipment(Entity):
-    def __init__(self, name: str, weight=0):
+    def __init__(self, name: str, weight: object = 0) -> object:
         Entity.__init__(self, name)
 
         assert weight is not None

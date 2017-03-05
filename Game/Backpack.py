@@ -1,6 +1,6 @@
 from Game.Entity import Entity
 from Game.Equipment import Equipment
-
+from Game.Armor import Armor
 
 class Backpack(Entity):
 
@@ -11,6 +11,7 @@ class Backpack(Entity):
 
         self.__items = {}
         self.__id = 0
+        self.armors = []
 
     def get_weight(self):
         weight = 0
@@ -20,9 +21,22 @@ class Backpack(Entity):
 
         return weight
 
-    def add_item(self, item: Equipment):
+    def add_item(self, item: Equipment) -> int:
         if self.get_weight() + item <= Backpack.capacity:
             self.__id += 1
-            self.__items.
+            self.__items.update({self.__id:item})
+            return self.__id
+        else:
+            return -1
+
+    def get_items(self) -> dict:
+        return self.__items.copy()
+
+    def get_armor_class(self) -> int:
+        for a in self.armors:
+            if a.is_equipped:
+                
+
+
 
 
