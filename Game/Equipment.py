@@ -10,8 +10,8 @@ class Equipment(Entity):
 
         self.weight = float(weight)
 
-    def __str__(self) -> object:
+    def __str__(self) -> str:
         return self.get_name()
 
-    def get_name(self):
+    def get_name(self) -> str:
         return super().get_name() + ' , Wgt: ' + str(self.weight)
