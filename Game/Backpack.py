@@ -12,6 +12,7 @@ class Backpack(Entity):
         self.__items = {}
         self.__id = 0
         self.armors = []
+        self.weapons = []
 
     def get_weight(self):
         weight = 0
@@ -33,9 +34,20 @@ class Backpack(Entity):
         return self.__items.copy()
 
     def get_armor_class(self) -> int:
+        ac = 9
         for a in self.armors:
             if a.is_equipped:
-                
+                ac += a.armor_class
+
+        return ac
+
+    def get_damage_inflicted(self) -> int:
+        di = 9
+        for w in self.weapons:
+            if w.is_equipped:
+                di += w.get_damage()
+
+        return di
 
 
 

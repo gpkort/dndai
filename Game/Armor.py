@@ -8,7 +8,7 @@ class Armor(Equipment):
         assert isinstance(armorclass, float) or isinstance(weight, int)
         assert armorclass is not None
 
-        self.armor_class = float(armor_class)
+        self.armor_class = armor_class
         self.is_equipped = is_equipped
 
     def __str__(self):
