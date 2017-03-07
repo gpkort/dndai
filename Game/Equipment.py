@@ -2,13 +2,13 @@ from Game.Entity import Entity
 
 
 class Equipment(Entity):
-    def __init__(self, name: str, weight: object = 0) -> object:
+    def __init__(self, name: str, weight: int = 0) -> object:
         Entity.__init__(self, name)
 
         assert weight is not None
         assert isinstance(weight, float) or isinstance(weight, int)
 
-        self.weight = float(weight)
+        self.weight = int(weight)
 
     def __str__(self) -> str:
         return self.get_name()
