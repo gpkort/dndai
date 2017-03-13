@@ -1,5 +1,6 @@
 import unittest
 from Game import Utilities as util, Player as play, PlayerUtilities as pu
+from Game.Classes.Fighter import Fighter
 
 
 class UtilityTests(unittest.TestCase):
@@ -8,28 +9,33 @@ class UtilityTests(unittest.TestCase):
         roll = util.roll_attribute_dice(3)
         self.assertTrue(3 <= roll < 18)
 
+    def test_ac(self):
+        fighter = Fighter()
+        ac = fighter.get_armor_class(14)
+        self.assertEqual(ac, -1)
+
     def test_roll_attribs(self):
         player = play.Player('Betsy ')
         print('Initial')
-        player.print_attributes()
+        print(player.attributes)
 
-        str0 = player.strength
-        int0 = player.intelligence
-        wis0 = player.wisdom
-        dex0 = player.dexterity
-        con0 = player.constitution
-        chra0 = player.charisma
+        str0 = player.attributes.strength
+        int0 = player.attributes.intelligence
+        wis0 = player.attributes.wisdom
+        dex0 = player.attributes.dexterity
+        con0 = player.attributes.constitution
+        chra0 = player.attributes.charisma
 
-        pu.roll_attributes(player, 4)
+        player.attributes = pu.roll_attributes(4)
         print('Second')
-        player.print_attributes()
+        print(player.attributes)
 
-        str1 = player.strength
-        int1 = player.intelligence
-        wis1 = player.wisdom
-        dex1 = player.dexterity
-        con1 = player.constitution
-        chra1 = player.charisma
+        str1 = player.attributes.strength
+        int1 = player.attributes.intelligence
+        wis1 = player.attributes.wisdom
+        dex1 = player.attributes.dexterity
+        con1 = player.attributes.constitution
+        chra1 = player.attributes.charisma
 
         self.assertGreater(str1, str0, "Strength is not set properly")
         self.assertGreater(int1, int0, "Intelligence is not set properly")
