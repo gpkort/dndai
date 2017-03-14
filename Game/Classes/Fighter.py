@@ -35,6 +35,11 @@ class Fighter(PlayerClass):
         return idx
 
     def add_xp(self, xp: int = 0):
+        """
+
+        :param xp:
+        :return:
+        """
         total = self.__experience_points + xp
         self.__experience_points = total if total <= Fighter.LEVEL_XP[3][2] else Fighter.LEVEL_XP[3][2]
 
@@ -46,5 +51,3 @@ class Fighter(PlayerClass):
 
     def get_armor_class(self, dexterity: int) -> int:
         return super().get_armor_class(dexterity)
-
-

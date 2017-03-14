@@ -40,6 +40,9 @@ class Player(Entity):
         if self.player_class is not None:
             ac += self.player_class.get_armor_class(self.attributes.dexterity)
 
+        ac = ac if ac <= 9 else 9
+        return ac
+
 
     def get_name(self):
         class_name = 'NONE' if self.player_class is None else self.player_class.name
