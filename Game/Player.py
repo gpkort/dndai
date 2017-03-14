@@ -19,14 +19,14 @@ class Attributes(object):
 
 
 class Player(Entity):
-    def __init__(self, name):
+    def __init__(self, name, attribs=None, player_class=None):
         Entity.__init__(self, name)
 
-        self.attributes = Attributes()
+        self.attributes = attribs if attribs is not None else Attributes()
         self.level = 1
         self.hit_points = 0
         self.armor_class = 0
-        self.player_class = None
+        self.player_class = player_class
         self.experience_points = 0
         self.wallet = None
         self.equipment = None
@@ -35,8 +35,11 @@ class Player(Entity):
     def __str__(self):
         return self.get_name() + ' Level: ' + self.level
 
-    def get_armor_class(self):
-        pass
+    def get_armor_class(self) -> int:
+        ac = 0
+        if self.player_class is not None:
+            ac += self.player_class.get_armor_class(self.attributes.dexterity)
+
 
     def get_name(self):
         class_name = 'NONE' if self.player_class is None else self.player_class.name
