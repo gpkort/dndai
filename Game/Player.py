@@ -43,6 +43,7 @@ class Player(Entity):
         ac = ac if ac <= 9 else 9
         return ac
 
+    # def get
 
     def get_name(self):
         class_name = 'NONE' if self.player_class is None else self.player_class.name

@@ -15,9 +15,6 @@ class Fighter(PlayerClass):
     LEVEL_TITLE = {1: "Veteran", 2: "Warrior", 3: "Swordmaster"}
     LEVEL_XP = [[0,1999], [2000, 3999], [4000, 5999]]
 
-    def get_hit_roll(self) -> float:
-        return Dice.eight_sided()
-
     def get_saving_throw(self, versus_attack):
         roll = Dice.twenty_sided()
         return (roll >= Fighter.SAVING_THROWS[versus_attack]), roll
@@ -35,11 +32,7 @@ class Fighter(PlayerClass):
         return idx
 
     def add_xp(self, xp: int = 0):
-        """
 
-        :param xp:
-        :return:
-        """
         total = self.__experience_points + xp
         self.__experience_points = total if total <= Fighter.LEVEL_XP[3][2] else Fighter.LEVEL_XP[3][2]
 
