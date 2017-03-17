@@ -40,10 +40,14 @@ class Player(Entity):
         if self.player_class is not None:
             ac += self.player_class.get_armor_class(self.attributes.dexterity)
 
+        ac += self.backpack.get_armor_class()
         ac = ac if ac <= 9 else 9
         return ac
 
-    # def get
+    def get_damage_inflicted(self) -> int:
+        damage = 0
+        damage += self.backpack.get_damage_inflicted()
+
 
     def get_name(self):
         class_name = 'NONE' if self.player_class is None else self.player_class.name
