@@ -43,17 +43,17 @@ class Backpack(Entity):
         return self.__items.copy()
 
     def get_armor_class(self) -> int:
-        ac = 9
+        ac = 0
         for a in self.armors:
             if a.is_equipped:
                 ac += a.armor_class
 
-        return ac
+        return ac if ac <=9 else 9
 
     def get_damage_inflicted(self) -> int:
-        di = 9
+        di = 0
         for w in self.weapons:
-            if w.is_equipped:
+            if w.is_armed:
                 di += w.get_damage()
 
         return di

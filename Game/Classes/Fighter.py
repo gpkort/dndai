@@ -42,5 +42,4 @@ class Fighter(PlayerClass):
     def get_title(self)->str:
         return Fighter.LEVEL_TITLE[self.get_level()]
 
-    def get_armor_class(self, dexterity: int) -> int:
-        return super().get_armor_class(dexterity)
+

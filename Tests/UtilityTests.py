@@ -9,11 +9,6 @@ class UtilityTests(unittest.TestCase):
         roll = util.roll_attribute_dice(3)
         self.assertTrue(3 <= roll < 18)
 
-    def test_ac(self):
-        fighter = Fighter()
-        ac = fighter.get_armor_class(14)
-        self.assertEqual(ac, -1)
-
     def test_roll_attribs(self):
         player = play.Player('Betsy ')
         print('Initial')

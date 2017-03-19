@@ -1,21 +1,7 @@
 from Game.Entity import Entity
 from Game.Backpack import Backpack
-
-
-class Attributes(object):
-    def __init__(self, strength: int = 0, intell: int = 0, wisdom: int = 0, dex: int = 0, con: int = 0,
-                 charisma: int = 0):
-        self.strength = strength
-        self.intelligence = intell
-        self.wisdom = wisdom
-        self.dexterity = dex
-        self.constitution = con
-        self.charisma = charisma
-
-    def __str__(self):
-        return str.format('Strength: {}, Intelligence: {}, Wisdom: {}, Dexterity:{}, Constitution: {}, Charisma: {}',
-                          self.strength, self.intelligence, self.wisdom, self.dexterity, self.constitution,
-                          self.charisma)
+from Game import PlayerUtilities
+from Game.Attributes import Attributes
 
 
 class Player(Entity):
@@ -36,9 +22,7 @@ class Player(Entity):
         return self.get_name() + ' Level: ' + self.level
 
     def get_armor_class(self) -> int:
-        ac = 0
-        if self.player_class is not None:
-            ac += self.player_class.get_armor_class(self.attributes.dexterity)
+        ac = PlayerUtilities.get_armor_class(self.attributes.dexterity)
 
         ac += self.backpack.get_armor_class()
         ac = ac if ac <= 9 else 9
@@ -47,6 +31,7 @@ class Player(Entity):
     def get_damage_inflicted(self) -> int:
         damage = 0
         damage += self.backpack.get_damage_inflicted()
+        return damage
 
 
     def get_name(self):

@@ -32,8 +32,4 @@ class PlayerClass(object):
     def get_initial_hit_points(self):
         pass
 
-    def get_armor_class(self, dexterity: int)->int:
-        ac = pu.BONUS_PENALTIES[dexterity]
-        ac = ac * -1 if ac is not None else 0
-        return ac
 
