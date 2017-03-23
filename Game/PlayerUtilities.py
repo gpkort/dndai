@@ -1,10 +1,6 @@
 from Game import Utilities as util
 from Game.Attributes import Attributes
-from Game.Player import Player
-from Game.Armor import Armor
-from Game.Weapon import Weapon
-from Game.Classes.Fighter import Fighter
-from Game import Dice
+
 
 BONUS_PENALTIES = {3: -3, 4: -2, 5: -2, 6: -1, 7: -1,
                    8: -1, 9: 0, 10: 0, 11: 0, 12: 0,
@@ -32,8 +28,4 @@ def get_armor_class(dexterity: int) -> int:
     return ac
 
 
-def create_fighter(name: str) -> Player:
-    player = Player(name, roll_attributes(3))
-    player.player_class = Fighter()
-    player.backpack.weapons.append(Weapon('sword', 20, lambda: Dice.eight_sided(), True))
-    player.backpack.armors.append(Armor("mail", 10, 5, True))
+

@@ -1,22 +1,18 @@
-from Game.Entity import Entity
-from Game.Backpack import Backpack
+from Game.Character import Character
 from Game import PlayerUtilities
 from Game.Attributes import Attributes
 
 
-class Player(Entity):
+class Player(Character):
+
     def __init__(self, name, attribs=None, player_class=None):
-        Entity.__init__(self, name)
+        super().__init__(name)
 
         self.attributes = attribs if attribs is not None else Attributes()
         self.level = 1
-        self.hit_points = 0
-        self.armor_class = 0
         self.player_class = player_class
         self.experience_points = 0
-        self.wallet = None
         self.equipment = None
-        self.backpack = Backpack()
 
     def __str__(self):
         return self.get_name() + ' Level: ' + self.level

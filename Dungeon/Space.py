@@ -1,7 +1,8 @@
+from abc import ABC
 
-class Space(object):
 
-    def __init__(self, name: str, width: int, length: int, height: int=0):
+class Space(ABC):
+    def __init__(self, name: str, width: int, length: int, height: int = 0):
         assert name is not None
 
         assert width is not None
