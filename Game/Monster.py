@@ -1,7 +1,7 @@
-from Game.Entity import Entity
+from Game.Character import Character
 
 
-class Monster(Entity):
+class Monster(Character):
     pass
 
 

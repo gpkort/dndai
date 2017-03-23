@@ -6,7 +6,7 @@ class Character(Entity):
     def __init__(self, name: str):
         super().__init__(name)
         self.__hit_points = 0
-        self.__armor_class = 0
+        self.__armor_class = 9
         self.__has_hp_set = False
         self.wallet = None
         self.backpack = Backpack()
