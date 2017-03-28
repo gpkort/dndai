@@ -1,5 +1,6 @@
 from Game.Entity import Entity
 from Game.Equipment.Backpack import Backpack
+from Game.Characters import PlayerUtilities
 
 
 class Character(Entity):
@@ -36,7 +37,4 @@ class Character(Entity):
 
 
     def get_name(self):
-        class_name = 'NONE' if self.player_class is None else self.player_class.name
-        class_title = '' if self.player_class is None else self.player_class.get_title()
-
-        return super().get_name() + ' - ' + class_name + ', ' + class_title
+        return super().get_name()
