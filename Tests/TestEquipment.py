@@ -1,13 +1,12 @@
 import unittest
-from Game.Equipment import Equipment
-from Game.Backpack import Backpack
-from Game.Weapon import Weapon
-from Game.Armor import Armor
 from Game import Dice
+from Game.Equipment.Equipment import Equipment
+from Game.Equipment.Armor import Armor
+from Game.Equipment.Backpack import Backpack
+from Game.Equipment.Weapon import Weapon
 
 
-class EquipmentTests(unittest.TestCase):
-
+class TestEquipment(unittest.TestCase):
     def test_equipment(self):
         equip = Equipment('test', 20)
         self.assertIsNotNone(equip)
@@ -36,7 +35,6 @@ class EquipmentTests(unittest.TestCase):
         bp.pop_item(eq2)
         self.assertEqual(10, bp.get_weight(), 'Get weight is not equal')
 
-
     def test_Armor(self):
         bp = Backpack()
         bp.armors.append(Armor("mail", 10, 5, True))
@@ -52,6 +50,3 @@ class EquipmentTests(unittest.TestCase):
         bp.armors.append(Armor('shield', 30, -2, True))
 
         self.assertEqual(3, bp.get_armor_class(), "AC is not correct")
-
-
-

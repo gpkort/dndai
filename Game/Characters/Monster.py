@@ -1,4 +1,4 @@
-from Game.Character import Character
+from Game.Characters.Character import Character
 
 
 class Monster(Character):

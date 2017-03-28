@@ -1,21 +1,26 @@
-from Game.Character import Character
-from Game import PlayerUtilities
-from Game.Attributes import Attributes
+from Game.Entity import Entity
+from Game.Equipment.Backpack import Backpack
 
 
-class Player(Character):
-
-    def __init__(self, name, attribs=None, player_class=None):
+class Character(Entity):
+    def __init__(self, name: str):
         super().__init__(name)
+        self.__hit_points = 0
+        self.__armor_class = 9
+        self.__has_hp_set = False
+        self.wallet = None
+        self.backpack = Backpack()
 
-        self.attributes = attribs if attribs is not None else Attributes()
-        self.level = 1
-        self.player_class = player_class
-        self.experience_points = 0
-        self.equipment = None
+    def init_hp(self, hit_points: int):
+        if self.__has_hp_set:
+            self.__hit_points = hit_points
+            self.__has_hp_set = True
 
-    def __str__(self):
-        return self.get_name() + ' Level: ' + self.level
+    def receive_damage(self, hit_points: int):
+        self.__hit_points -= hit_points
+
+    def is_alive(self)-> bool:
+        return self.__has_hp_set and self.__hit_points > 0
 
     def get_armor_class(self) -> int:
         ac = PlayerUtilities.get_armor_class(self.attributes.dexterity)
@@ -35,4 +40,3 @@ class Player(Character):
         class_title = '' if self.player_class is None else self.player_class.get_title()
 
         return super().get_name() + ' - ' + class_name + ', ' + class_title
-

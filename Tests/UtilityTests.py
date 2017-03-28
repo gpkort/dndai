@@ -1,6 +1,8 @@
 import unittest
-from Game import Utilities as util, Player as play, PlayerUtilities as pu
-from Game.Classes.Fighter import Fighter
+
+from Game import Utilities as util
+from Game.Characters.Player import Player
+from Game.Characters import PlayerUtilities as pu
 
 
 class UtilityTests(unittest.TestCase):
@@ -10,7 +12,7 @@ class UtilityTests(unittest.TestCase):
         self.assertTrue(3 <= roll < 18)
 
     def test_roll_attribs(self):
-        player = play.Player('Betsy ')
+        player = Player('Betsy ')
         print('Initial')
         print(player.attributes)
 

@@ -1,5 +1,5 @@
 from Game import Utilities as util
-from Game.Attributes import Attributes
+from Game.Characters.Attributes import Attributes
 
 
 BONUS_PENALTIES = {3: -3, 4: -2, 5: -2, 6: -1, 7: -1,

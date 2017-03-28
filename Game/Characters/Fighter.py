@@ -1,6 +1,6 @@
-from Game.Classes.PlayerClass import PlayerClass
-from Game.Classes import ClassUtilities as cu
-from Game import Dice, PlayerUtilities as pu
+from Game import Dice
+from Game.Characters import ClassUtilities as cu
+from Game.Characters.PlayerClass import PlayerClass
 
 
 class Fighter(PlayerClass):

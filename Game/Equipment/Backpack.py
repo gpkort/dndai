@@ -1,6 +1,5 @@
 from Game.Entity import Entity
 from Game.Equipment import Equipment
-from Game.Armor import Armor
 
 
 class Backpack(Entity):

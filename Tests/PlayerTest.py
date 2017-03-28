@@ -1,9 +1,10 @@
 import unittest
-from Game.Player import Player
-from Game.Equipment import Equipment
-from Game.Armor import Armor
-from Game.Weapon import Weapon
+
 from Game import Dice
+from Game.Characters.Player import Player
+from Game.Equipment.Equipment import Equipment
+from Game.Equipment.Armor import Armor
+from Game.Equipment.Weapon import Weapon
 
 
 class PlayerTests(unittest.TestCase):

@@ -1,9 +1,8 @@
-from Game.Player import Player
-from Game.Weapon import Weapon
-from Game.Armor import Armor
-from Game.Classes.Fighter import Fighter
-
-from Game import PlayerUtilities as pu
+from Game.Characters import PlayerUtilities as pu
+from Game.Characters.Fighter import Fighter
+from Game.Characters.Player import Player
+from Game.Equipment.Armor import Armor
+from Game.Equipment.Weapon import Weapon
 
 
 def create_fighter(name: str) -> Player:

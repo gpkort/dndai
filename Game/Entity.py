@@ -7,5 +7,5 @@ class Entity(object):
         assert len(name) > 0
         self._name = name
 
-    def get_name(self):
+    def get_name(self) -> str:
         return self._name
