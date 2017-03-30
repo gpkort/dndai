@@ -1,15 +1,52 @@
 from Game.Characters import PlayerUtilities
-from Game.Characters.Attributes import Attributes
 from Game.Characters.Character import Character
 
 
 class Player(Character):
 
-    def __init__(self, name, attribs=None, player_class=None):
-        super().__init__(name)
-        self.attributes = attribs if attribs is not None else Attributes()
+    def __init__(self, name, attribs=None, xps: int=0):
+        super().__init__(name, attribs)
+        self.__experience_points = xps
+        self.__level = 0
 
-    def __str__(self):
-        return super().get_name()
+    def add_xp(self, xp: int=0):
+        self.__experience_points += xp
+
+    def set_xp(self, xp: int=0):
+        self.__experience_points = xp
+
+    def get_xp(self)->int:
+        return self.__experience_points
+
+    def get_level(self)->int:
+        pass
+
+    def get_hit_roll(self)->int:
+        pass
+
+    def get_title(self):
+        pass
+
+    def get_saving_throw(self, versus_attack):
+        pass
+
+    def get_initial_hit_points(self):
+        pass
+
+    def get_armor_class(self) -> int:
+        ac = PlayerUtilities.get_armor_class(self.attributes.dexterity)
+
+        ac += self.backpack.get_armor_class()
+        ac = ac if ac <= 9 else 9
+        return ac
+
+    def get_damage_inflicted(self) -> int:
+        damage = 0
+        damage += self.backpack.get_damage_inflicted()
+        return damage
+
+
+    def get_name(self):
+        return super().get_name() + ' - None'
 
 

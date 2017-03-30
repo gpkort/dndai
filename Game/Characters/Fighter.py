@@ -1,9 +1,9 @@
 from Game import Dice
 from Game.Characters import ClassUtilities as cu
-from Game.Characters.PlayerClass import PlayerClass
+from Game.Characters.Player import Player
 
 
-class Fighter(PlayerClass):
+class Fighter(Player):
     SAVING_THROWS = {
         cu.ATTACK_TYPES.DEATH_RAY_POISON: 12,
         cu.ATTACK_TYPES.MAGIC_WANDS: 13,
@@ -23,16 +23,12 @@ class Fighter(PlayerClass):
         return Dice.eight_sided()
 
     def get_level(self) -> int:
-        idx = 0
-
-        for level in Fighter.LEVEL_XP:
-            idx += 1
+        for idx, level in Fighter.LEVEL_XP:
             if level[1] >= self.__experience_points <= level[2]:
                 break
         return idx
 
     def add_xp(self, xp: int = 0):
-
         total = self.__experience_points + xp
         self.__experience_points = total if total <= Fighter.LEVEL_XP[3][2] else Fighter.LEVEL_XP[3][2]
 

@@ -22,7 +22,7 @@ class PlayerTests(unittest.TestCase):
 
     def test_player_good(self):
         greg = Player('greg')
-        self.assertEqual('greg', greg.get_name(), 'Name doesn\'t match')
+        self.assertEqual('greg - None', greg.get_name(), 'Name doesn\'t match')
 
     def test_Equip_fail_type(self):
         with self.assertRaises(AssertionError):

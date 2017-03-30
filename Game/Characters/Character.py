@@ -1,16 +1,18 @@
 from Game.Entity import Entity
 from Game.Equipment.Backpack import Backpack
 from Game.Characters import PlayerUtilities
+from Game.Characters.Attributes import Attributes
 
 
 class Character(Entity):
-    def __init__(self, name: str):
+    def __init__(self, name: str, attribs: Attributes=None):
         super().__init__(name)
         self.__hit_points = 0
         self.__armor_class = 9
         self.__has_hp_set = False
         self.wallet = None
         self.backpack = Backpack()
+        self.attributes = attribs if attribs is not None else Attributes()
 
     def init_hp(self, hit_points: int):
         if self.__has_hp_set:
@@ -34,7 +36,6 @@ class Character(Entity):
         damage = 0
         damage += self.backpack.get_damage_inflicted()
         return damage
-
 
     def get_name(self):
         return super().get_name()
