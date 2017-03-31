@@ -12,3 +12,19 @@ class Attributes(object):
         return str.format('Strength: {}, Intelligence: {}, Wisdom: {}, Dexterity:{}, Constitution: {}, Charisma: {}',
                           self.strength, self.intelligence, self.wisdom, self.dexterity, self.constitution,
                           self.charisma)
+
+    def equals(self, attribs)->bool:
+        """
+
+        :type attribs: Attributes
+        """
+        if type(attribs) is not self:
+            return False
+        return self.strength == attribs.strength \
+               and self.intelligence == attribs.intelligence \
+               and self.wisdom == attribs.wisdom \
+               and self.dexterity == attribs.dexterity \
+               and self.constitution == attribs.constitution \
+               and self.charisma == attribs.charisma
+
+

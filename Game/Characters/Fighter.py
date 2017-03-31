@@ -4,7 +4,7 @@ from Game.Characters.Player import Player
 from Game.Characters.Character import Character
 
 
-def get_fighter(char: Character):
+def get_fighter(char: Player) -> object:
     fighter = Fighter(char.get_name(), char.attributes)
     fighter.wallet = char.wallet
     fighter.backpack = char.backpack

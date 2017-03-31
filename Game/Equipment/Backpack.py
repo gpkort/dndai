@@ -13,6 +13,12 @@ class Backpack(Entity):
         self.armors = []
         self.weapons = []
 
+    # def __str__(self) -> str:
+    #     return self.get_name()
+
+    def __copy__(self):
+        pass
+
     def get_weight(self) -> int:
         weight = 0
 
@@ -20,9 +26,6 @@ class Backpack(Entity):
             weight += self.__items[key].weight
 
         return weight
-
-    def __str__(self) -> str:
-        return self.get_name()
 
     def get_name(self) -> str:
         return super().get_name() + ' , Capacity: ' + str(Backpack.capacity)
