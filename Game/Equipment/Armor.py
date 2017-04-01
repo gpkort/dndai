@@ -2,7 +2,7 @@ from Game.Equipment.Equipment import Equipment
 
 
 class Armor(Equipment):
-    def __init__(self, name, weight=0, armor_class: int=0, is_equipped: bool=False):
+    def __init__(self, name: str, weight: int = 0, armor_class: int = 0, is_equipped: bool = False):
         Equipment.__init__(self, name, weight)
 
         assert isinstance(armor_class, float) or isinstance(weight, int)

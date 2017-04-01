@@ -18,8 +18,12 @@ class Attributes(object):
 
         :type attribs: Attributes
         """
-        if type(attribs) is not self:
+        if type(attribs) is self:
+            return True
+
+        if type(attribs) is not Attributes:
             return False
+
         return self.strength == attribs.strength \
                and self.intelligence == attribs.intelligence \
                and self.wisdom == attribs.wisdom \

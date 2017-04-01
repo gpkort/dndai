@@ -1,5 +1,6 @@
 from Game.Entity import Entity
 from Game.Equipment.Backpack import Backpack
+from Game.Equipment.Wallet import Wallet
 from Game.Characters import PlayerUtilities
 from Game.Characters.Attributes import Attributes
 
@@ -10,7 +11,7 @@ class Character(Entity):
         self.__hit_points = 0
         self.__armor_class = 9
         self.__has_hp_set = False
-        self.wallet = None
+        self.wallet = Wallet()
         self.backpack = Backpack()
         self.attributes = attribs if attribs is not None else Attributes()
 

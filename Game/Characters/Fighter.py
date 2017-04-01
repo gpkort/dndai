@@ -1,15 +1,6 @@
 from Game import Dice
 from Game.Characters import ClassUtilities as cu
 from Game.Characters.Player import Player
-from Game.Characters.Character import Character
-
-
-def get_fighter(char: Player) -> object:
-    fighter = Fighter(char.get_name(), char.attributes)
-    fighter.wallet = char.wallet
-    fighter.backpack = char.backpack
-
-    return fighter
 
 
 class Fighter(Player):
@@ -23,6 +14,14 @@ class Fighter(Player):
 
     LEVEL_TITLE = {1: "Veteran", 2: "Warrior", 3: "Swordmaster"}
     LEVEL_XP = [[0, 1999], [2000, 3999], [4000, 5999]]
+
+    @staticmethod
+    def get_fighter(char: Player):
+        fighter = Fighter(char.get_name(), char.attributes)
+        fighter.wallet = char.wallet
+        fighter.backpack = char.backpack
+
+        return fighter
 
     def get_saving_throw(self, versus_attack):
         roll = Dice.twenty_sided()

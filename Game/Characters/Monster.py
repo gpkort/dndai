@@ -1,8 +1,20 @@
 from Game.Characters.Character import Character
+from Game.Characters.Attributes import Attributes
 
 
 class Monster(Character):
-    pass
+
+    def __init__(self, name: str, attribs: Attributes=None, damage=None, armour: int=9, spells=None, specials=None):
+        super().__init__(self, name, attribs)
+
+        self.damage = damage
+        self.armour = armour
+        self.spells = spells if spells is not None else []
+        self.specials = spells if specials is not None else []
+
+    def get_damage_inflicted(self) -> int:
+        if self.damage is None:
+            return super().get_damage_inflicted()
 
 
 """
