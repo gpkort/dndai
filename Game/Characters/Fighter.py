@@ -1,15 +1,15 @@
 from Game import Dice
-from Game.Characters import ClassUtilities as cu
 from Game.Characters.Player import Player
+from Game.Characters import PlayerUtilities as pu
 
 
 class Fighter(Player):
     SAVING_THROWS = {
-        cu.ATTACK_TYPES.DEATH_RAY_POISON: 12,
-        cu.ATTACK_TYPES.MAGIC_WANDS: 13,
-        cu.ATTACK_TYPES.PARALYSIS_STONE: 14,
-        cu.ATTACK_TYPES.DRAGON_BREATH: 15,
-        cu.ATTACK_TYPES.RODS_STAFF_SPELLS: 16
+        pu.ATTACK_TYPES.DEATH_RAY_POISON: 12,
+        pu.ATTACK_TYPES.MAGIC_WANDS: 13,
+        pu.ATTACK_TYPES.PARALYSIS_STONE: 14,
+        pu.ATTACK_TYPES.DRAGON_BREATH: 15,
+        pu.ATTACK_TYPES.RODS_STAFF_SPELLS: 16
     }
 
     LEVEL_TITLE = {1: "Veteran", 2: "Warrior", 3: "Swordmaster"}
@@ -35,6 +35,9 @@ class Fighter(Player):
             if level[1] >= self.__experience_points <= level[2]:
                 break
         return idx
+
+    def get_hit_roll(self, ac: int)->int:
+        return super().get_hit_roll(ac)
 
     def add_xp(self, xp: int = 0):
         total = self.__experience_points + xp

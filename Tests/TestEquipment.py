@@ -13,6 +13,8 @@ class TestEquipment(unittest.TestCase):
 
     def test_weapon(self):
         weapon = Weapon('sword', 20, lambda: Dice.eight_sided())
+        print(str.format('Attack1 = {0}', weapon.get_damage()))
+        print(str.format('Attack2 = {0}', weapon.get_damage()))
         self.assertIsNotNone(weapon)
 
     def test_backpack(self):
@@ -43,10 +45,4 @@ class TestEquipment(unittest.TestCase):
 
         self.assertEqual(3, bp.get_armor_class(), "AC is not correct")
 
-    def test_Armor(self):
-        bp = Backpack()
-        bp.armors.append(Armor("mail", 10, 5, True))
-        bp.armors.append(Armor("Platemail", 10, 3, False))
-        bp.armors.append(Armor('shield', 30, -2, True))
 
-        self.assertEqual(3, bp.get_armor_class(), "AC is not correct")

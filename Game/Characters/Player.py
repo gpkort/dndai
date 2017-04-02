@@ -21,8 +21,8 @@ class Player(Character):
     def get_level(self)->int:
         pass
 
-    def get_hit_roll(self)->int:
-        pass
+    def get_hit_roll(self, ac: int)->int:
+        return PlayerUtilities.HIT_ROLL_BY_AC[ac]
 
     def get_title(self):
         pass

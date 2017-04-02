@@ -14,8 +14,15 @@ def create_fighter(name: str) -> Fighter:
     return fighter
 
 
-def make_goblin() -> Monster:
-    pass
+def make_goblin(gname: str) -> Monster:
+    monster = Monster(name=gname, damage=lambda: Dice.eight_sided(), armour=6)
+    monster.init_hp(Dice.six_sided())
+
+def make_fight(combatants:list):
+    assert len(combatants) == 2
+
+
+
 
 # if __name__ == '__main__':
 #     obj = MyClass()
