@@ -23,7 +23,13 @@ class Fighter(Player):
 
         return fighter
 
-    def get_saving_throw(self, versus_attack):
+    def __init__(self, name, attribs=None, xps: int = 0):
+        super().__init__(name, attribs, xps)
+        self.__experience_points = xps
+        self.__level = 0
+        self.__hit_points = Dice.eight_sided()
+
+    def get_saving_throw(self, versus_attack)->bool:
         roll = Dice.twenty_sided()
         return (roll >= Fighter.SAVING_THROWS[versus_attack]), roll
 
@@ -37,7 +43,9 @@ class Fighter(Player):
         return idx
 
     def get_hit_roll(self, ac: int)->int:
-        return super().get_hit_roll(ac)
+        roll = super().get_hit_roll(ac)
+        roll -= pu.BONUS_PENALTIES[self.attributes.strength]
+        return roll
 
     def add_xp(self, xp: int = 0):
         total = self.__experience_points + xp

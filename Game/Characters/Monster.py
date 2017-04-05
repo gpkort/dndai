@@ -16,6 +16,9 @@ class Monster(Character):
         if self.damage is None:
             return super().get_damage_inflicted()
 
+    def get_armor_class(self):
+        return self.armour
+
 
 """
 Armor Class: 6
