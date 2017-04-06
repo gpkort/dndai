@@ -34,7 +34,9 @@ class Fighter(Player):
         return (roll >= Fighter.SAVING_THROWS[versus_attack]), roll
 
     def get_initial_hit_points(self):
-        return Dice.eight_sided()
+        bonus = pu.BONUS_PENALTIES[self.attributes.constitution]
+        bonus = bonus if bonus > 0 else 0
+        return Dice.eight_sided() + bonus
 
     def get_level(self) -> int:
         for idx, level in Fighter.LEVEL_XP:

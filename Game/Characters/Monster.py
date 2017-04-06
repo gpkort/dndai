@@ -4,13 +4,19 @@ from Game.Characters.Attributes import Attributes
 
 class Monster(Character):
 
-    def __init__(self, name: str, attribs: Attributes=None, damage=None, armour: int=9, spells=None, specials=None):
+    def __init__(self, name: str, attribs: Attributes=None, damage=None, armour: int=9, xpvalue: int = 0, spells=None,
+                 specials=None):
+        """
+
+        :type spells: object
+        """
         super().__init__(self, name, attribs)
 
         self.damage = damage
         self.armour = armour
         self.spells = spells if spells is not None else []
         self.specials = spells if specials is not None else []
+        self.xpvalue = xpvalue
 
     def get_damage_inflicted(self) -> int:
         if self.damage is None:
@@ -18,6 +24,8 @@ class Monster(Character):
 
     def get_armor_class(self):
         return self.armour
+
+
 
 
 """
