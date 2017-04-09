@@ -16,7 +16,7 @@ class Character(Entity):
         self.attributes = attribs if attribs is not None else Attributes()
 
     def init_hp(self, hit_points: int):
-        if self.__has_hp_set:
+        if not self.__has_hp_set:
             self.__hit_points = hit_points
             self.__has_hp_set = True
 

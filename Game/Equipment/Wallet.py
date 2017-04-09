@@ -1,8 +1,7 @@
 
-
 class Wallet(object):
 
-    def __init__(self, copper: int=0, silver: int=0, electrum: int=0, gold: int=0, platinum: int=0):
+    def __init__(self, copper: int= 0, silver: int = 0, electrum: int = 0, gold: int = 0, platinum: int = 0):
         self.cp = copper
         self.sp = silver
         self.ep = electrum
@@ -22,16 +21,12 @@ class Wallet(object):
     # def get_gem(self, name: str)-> object:
     #     return self.__gems.pop(name)
 
-    def get_wallet(self, wallet):
+    def fill_wallet(self, wallet):
         self.cp += wallet.cp
         self.sp += wallet.sp
         self.ep += wallet.ep
         self.gp += wallet.gp
         self.pp += wallet.pp
-
-
-
-
 
 
 """
