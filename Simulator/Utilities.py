@@ -7,9 +7,11 @@ from Game.Equipment.Weapon import Weapon
 from Game.Equipment.Wallet import Wallet
 from Game import Dice
 
+import pandas as pd
+
 GOBLIN_INITIATIVE = 13
 NUMBER_OF_FIGHTS = 2
-NUMBER_OF_RUNS = 10000
+NUMBER_OF_RUNS = 100000
 
 
 def create_fighter(name: str) -> Fighter:
@@ -52,7 +54,7 @@ def fighter_initiative(dexterity) -> bool:
     return Dice.twenty_sided() + pu.BONUS_PENALTIES[dexterity] > GOBLIN_INITIATIVE
 
 
-def get_results(fighter: Fighter, goblins):
+def get_results(fighter: Fighter, goblins)->list:
     for gob in goblins:
         if fighter_initiative(fighter.attributes.dexterity):
             fight_to_death(fighter, gob)
@@ -65,17 +67,31 @@ def get_results(fighter: Fighter, goblins):
             fighter.add_xp(gob.xp_value)
 
     att = fighter.attributes
-    return att.strength, att.intelligence, att.wisdom, att.dexterity, att.constitution, att.charisma, fighter.get_xp()
+    hp = fighter.get_hit_points()
+    hp = 0 if hp < 0 else hp
+
+    return [att.strength, att.intelligence, att.wisdom, att.dexterity, att.constitution, att.charisma, fighter.get_xp() + hp]
 
 
 def run_battle():
-    goblins = []
-    fighter = create_fighter("fighter_dude")
+    battles = pd.DataFrame(columns=['strength',
+                                    'intelligence',
+                                    'wisdom',
+                                    'dexterity',
+                                    'constitution',
+                                    'charisma',
+                                    'score'])
 
-    for i in range(0, NUMBER_OF_FIGHTS):
-        goblins.append(make_goblin('Goblin' + str(i)))
+    for i in range(NUMBER_OF_RUNS):
+        goblins = []
+        fighter = create_fighter("fighter_dude")
 
-    print(get_results(fighter, goblins))
+        for j in range(0, NUMBER_OF_FIGHTS):
+            goblins.append(make_goblin('Goblin' + str(i)))
+
+        battles.loc[i] = get_results(fighter, goblins)
+
+    battles.to_pickle('battles')
 
 
 if __name__ == '__main__':

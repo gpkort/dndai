@@ -23,7 +23,7 @@ class Character(Entity):
     def receive_damage(self, hit_points: int):
         self.__hit_points -= hit_points
 
-    def get_hit_points(self):
+    def get_hit_points(self) -> int:
         return self.__hit_points
 
     def is_alive(self)-> bool:

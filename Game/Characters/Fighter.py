@@ -50,7 +50,8 @@ class Fighter(Player):
         return roll
 
     def add_xp(self, xp: int = 0):
-        total = self.__experience_points + xp
+        bonus = 0 if self.attributes.strength < 13 else (xp * pu.ABILITY_SCORE_LOOKUP[self.attributes.strength])
+        total = self.__experience_points + xp + bonus
         super().add_xp(total if total <= Fighter.LEVEL_XP[2][1] else Fighter.LEVEL_XP[2][1])
 
     def set_xp(self, xp: int = 0):
