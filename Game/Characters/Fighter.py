@@ -27,7 +27,7 @@ class Fighter(Player):
         super().__init__(name, attribs, xps)
         self.__experience_points = xps
         self.__level = 0
-        self.__hit_points = Dice.eight_sided()
+        self.init_hp(self.get_initial_hit_points())
 
     def get_saving_throw(self, versus_attack)->bool:
         roll = Dice.twenty_sided()
@@ -51,10 +51,10 @@ class Fighter(Player):
 
     def add_xp(self, xp: int = 0):
         total = self.__experience_points + xp
-        self.__experience_points = total if total <= Fighter.LEVEL_XP[3][2] else Fighter.LEVEL_XP[3][2]
+        super().add_xp(total if total <= Fighter.LEVEL_XP[2][1] else Fighter.LEVEL_XP[2][1])
 
     def set_xp(self, xp: int = 0):
-        self.__experience_points = xp if xp <= Fighter.LEVEL_XP[3][2] else Fighter.LEVEL_XP[3][2]
+        super().set_xp(xp if xp <= Fighter.LEVEL_XP[2][1] else Fighter.LEVEL_XP[2][1])
 
     def get_title(self) -> str:
         return Fighter.LEVEL_TITLE[self.get_level()]

@@ -16,7 +16,7 @@ class Monster(Character):
         self.armour = armour
         self.spells = spells if spells is not None else []
         self.specials = spells if specials is not None else []
-        self.xpvalue = xpvalue
+        self.xp_value = xpvalue
 
     def get_damage_inflicted(self) -> int:
         return self.damage() if self.damage is not None else super().get_damage_inflicted()

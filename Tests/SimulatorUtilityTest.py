@@ -27,3 +27,15 @@ class UtilityTests(unittest.TestCase):
         fac = 5 - pu.BONUS_PENALTIES[fight.attributes.dexterity]
         self.assertEqual(fac, fight.get_armor_class(), 'fighter ac is wrong')
         print('FAC = {}'.format(fac))
+
+    def test_kill(self):
+        fight = su.create_fighter('test1')
+        gob = su.make_goblin('Gob1')
+
+        while gob.is_alive():
+            dam = fight.get_damage_inflicted()
+            print('Make strike: ' + str(dam))
+            gob.receive_damage(dam)
+
+        self.assertTrue(gob.get_hit_points() <= 0)
+
