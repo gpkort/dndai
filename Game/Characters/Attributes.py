@@ -13,7 +13,39 @@ class Attributes(object):
                           self.strength, self.intelligence, self.wisdom, self.dexterity, self.constitution,
                           self.charisma)
 
-    def equals(self, attribs)->bool:
+    def reallocate(self, source: str, target: str):
+        sourceval = self.get_attribute(source.upper())
+        targetval = self.get_attribute(target.upper())
+
+        if sourceval > 4 and 3 <= targetval <= 16:
+            self.set_attribute(source, sourceval - 2)
+            self.set_attribute(target, targetval + 2)
+
+    def set_attribute(self, name: str, value: int):
+        if name.upper() == 'STRENGTH':
+            self.strength = value
+        elif name.upper() == 'INTELLIGENCE':
+            self.intelligence = value
+        elif name.upper() == 'WISDOM':
+            self.wisdom = value
+        elif name.upper() == 'DEXTERITY':
+            self.dexterity = value
+        elif name.upper() == 'CONSTITUTION':
+            self.constitution = value
+        elif name.upper() == 'CHARISMA':
+            self.charisma = value
+
+    def get_attribute(self, name: str) -> int:
+        return {
+            'STRENGTH': self.strength,
+            'INTELLIGENCE': self.intelligence,
+            'WISDOM': self.wisdom,
+            'DEXTERITY': self.dexterity,
+            'CONSTITUTION': self.constitution,
+            'CHARISMA': self.charisma
+        }.get(name, -1)
+
+    def equals(self, attribs) -> bool:
         """
 
         :type attribs: Attributes
@@ -30,5 +62,3 @@ class Attributes(object):
                and self.dexterity == attribs.dexterity \
                and self.constitution == attribs.constitution \
                and self.charisma == attribs.charisma
-
-

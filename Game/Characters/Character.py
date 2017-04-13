@@ -39,8 +39,7 @@ class Character(Entity):
     def get_hit_roll(self, ac: int) -> int:
         return PlayerUtilities.HIT_ROLL_BY_AC[ac]
 
-    def get_damage_inflicted(self) -> int:
-        damage = 0
+    def get_damage_inflicted(self, damage: int=0) -> int:
         damage += self.backpack.get_damage_inflicted()
         return damage
 
