@@ -8,7 +8,7 @@ class Player(Character):
         self.__experience_points = xps
         self.__level = 0
 
-    def add_xp(self, xp: int = 0):
+    def add_xp(self, xp: float = 0.0):
         self.__experience_points += xp
 
     def set_xp(self, xp: int = 0):

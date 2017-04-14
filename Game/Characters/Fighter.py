@@ -53,7 +53,7 @@ class Fighter(Player):
         damage += pu.BONUS_PENALTIES[self.attributes.strength]
         return super().get_damage_inflicted(damage)
 
-    def add_xp(self, xp: int = 0):
+    def add_xp(self, xp: float = 0.0):
         bonus = 0 if self.attributes.strength < 13 else (xp * pu.ABILITY_SCORE_LOOKUP[self.attributes.strength])
         total = self.__experience_points + xp + bonus
         super().add_xp(total if total <= Fighter.LEVEL_XP[2][1] else Fighter.LEVEL_XP[2][1])

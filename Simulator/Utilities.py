@@ -12,7 +12,7 @@ from sklearn.linear_model import LinearRegression
 import seaborn as sns
 from sklearn import metrics
 import numpy as np
-from sklearn.cross_validation import train_test_split
+# from sklearn.cross_validation import train_test_split
 
 """
 'strength',
@@ -77,7 +77,7 @@ def adjust_attributes(coeff, attribs: Attributes):
 
 
 def make_goblin(gname: str) -> Monster:
-    monster = Monster(name=gname, damage=lambda: Dice.eight_sided(), armour=6, xpvalue=6)
+    monster = Monster(name=gname, damage=lambda: Dice.eight_sided(), armour=6, xpvalue=1)
     monster.init_hp(6)
     monster.wallet = Wallet(gold=Dice.eight_sided())
     return monster
@@ -90,14 +90,11 @@ def fight_to_death(first, second) -> Character:
     while first.is_alive() and second.is_alive():
         if make_hit(firsthit):
             second.receive_damage(first.get_damage_inflicted())
-        if not second.is_alive():
-            break
-        else:
+        if second.is_alive():
             if make_hit(secondhit):
                 first.receive_damage(second.get_damage_inflicted())
 
-    if not first.is_alive() or not second.is_alive():
-        return first if not second.is_alive() else second
+    return first if not second.is_alive() else second
 
 
 def make_hit(roll: int):
@@ -147,7 +144,10 @@ def run_battle():
 
         battles.loc[i] = get_results(fighter, goblins)
 
-    battles.to_pickle('battles_attrib')
+        if i % 100 == 0:
+            print("Number of runs: " + str(i))
+
+    battles.to_pickle('battles_1')
 
 def smart_adjust():
     fighter = create_fighter("fighter_dude")
