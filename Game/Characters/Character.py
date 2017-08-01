@@ -3,6 +3,7 @@ from Game.Equipment.Backpack import Backpack
 from Game.Equipment.Wallet import Wallet
 from Game.Characters import PlayerUtilities
 from Game.Characters.Attributes import Attributes
+from Game.Characters import PlayerUtilities as pu
 
 
 class Character(Entity):
@@ -37,7 +38,7 @@ class Character(Entity):
         return ac
 
     def get_hit_roll(self, ac: int) -> int:
-        return PlayerUtilities.HIT_ROLL_BY_AC[ac]
+        return PlayerUtilities.HIT_ROLL_BY_AC[ac] - pu.BONUS_PENALTIES[self.attributes.strength]
 
     def get_damage_inflicted(self, damage: int=0) -> int:
         damage += self.backpack.get_damage_inflicted()

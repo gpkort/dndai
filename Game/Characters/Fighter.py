@@ -44,11 +44,6 @@ class Fighter(Player):
                 break
         return idx
 
-    def get_hit_roll(self, ac: int)->int:
-        roll = super().get_hit_roll(ac)
-        roll -= pu.BONUS_PENALTIES[self.attributes.strength]
-        return roll
-
     def get_damage_inflicted(self, damage: int=0) -> int:
         damage += pu.BONUS_PENALTIES[self.attributes.strength]
         return super().get_damage_inflicted(damage)
