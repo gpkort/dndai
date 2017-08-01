@@ -7,6 +7,8 @@ from Game.Equipment.Armor import Armor
 from Game.Equipment.Weapon import Weapon
 from Game.Equipment.Wallet import Wallet
 from Game import Dice
+
+import Simulator.Utilities as su
 import pandas as pd
 
 
@@ -70,23 +72,16 @@ def get_results(fighter: Fighter, goblins) -> list:
     return [att.strength, att.intelligence, att.wisdom, att.dexterity, att.constitution, att.charisma, fighter.get_xp()]
 
 
-def run_fighter_battle(numberOfRuns: int, useSmartAdjust: bool = False):
-    battles = pd.DataFrame(columns=['strength',
-                                    'intelligence',
-                                    'wisdom',
-                                    'dexterity',
-                                    'constitution',
-                                    'charisma',
-                                    'score'])
+def run_fighter_battle(battles, numberOfRuns: int, useSmartAdjust: bool = False):
     if useSmartAdjust:
-        first_coeff = get_coeff()
+        first_coeff = su.get_coeff()
 
     for i in range(numberOfRuns):
         goblins = []
         fighter = create_fighter("fighter_dude")
 
         if useSmartAdjust:
-            smart_adjust(fighter, first_coeff)
+            su.smart_adjust(fighter, first_coeff)
 
         for j in range(0, NUMBER_OF_FIGHTS):
             goblins.append(make_goblin('Goblin' + str(i)))
@@ -96,7 +91,7 @@ def run_fighter_battle(numberOfRuns: int, useSmartAdjust: bool = False):
         if i % 100 == 0:
             print("Number of runs: " + str(i))
 
-    battles.to_pickle('battles_4')
+    return battles
 
 
 

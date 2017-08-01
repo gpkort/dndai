@@ -1,7 +1,12 @@
 from sklearn.linear_model import LinearRegression
 from Game.Characters.Attributes import Attributes
+import pandas as pd
 
 FEATURES = ['strength', 'intelligence', 'wisdom', 'dexterity', 'constitution', 'charisma', 'score']
+
+
+def get_training_dataset():
+    return pd.DataFrame(columns=FEATURES)
 
 
 def get_coeff(battles):
@@ -44,7 +49,3 @@ def adjust_attributes(coeff, attribs: Attributes):
 def smart_adjust(character, coeff):
     adjust_attributes(coeff, character.attributes)
 
-
-if __name__ == '__main__':
-    run_fighter_battle()
-    # tester()
