@@ -70,6 +70,11 @@ class Player(Character):
         pass
 
     def get_armor_class(self) -> int:
+        """
+        Retrieves the armor rating of a character based on equipped armor
+        The lower the better
+        :return: the armor class, max armor is nine
+        """
         armor_class = PlayerUtilities.get_armor_class(self.attributes.dexterity)
 
         armor_class += self.backpack.get_armor_class()
@@ -77,8 +82,17 @@ class Player(Character):
         return armor_class
 
     def get_damage_inflicted(self, damage=0) -> int:
+        """
+        Retrieves the armor rating of a character based on equipped armor
+        The lower the better
+        :return: the armor class, max armor is nine
+        """
         damage += self.backpack.get_damage_inflicted()
         return damage
 
     def get_name(self):
+        """
+        Retieves character name
+        :return: base class value with a title of None
+        """
         return super().get_name() + ' - None'
